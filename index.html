@@ -3,62 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube SEO AI Agent</title>
+    <title>YouTube SEO AI Agent - Professional Dashboard</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            background: #0f172a;
-            color: #f8fafc;
+            background: #0b0f19;
+            color: #f1f5f9;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
         }
-        .card {
+        .container {
             background: #1e293b;
             padding: 30px;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             border: 1px solid #334155;
         }
         h1 {
-            color: #ff4757;
-            font-size: 24px;
+            color: #ff3838;
+            font-size: 26px;
             text-align: center;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-group {
             margin-bottom: 20px;
         }
         label {
             font-size: 14px;
-            color: #94a3b8;
+            color: #cbd5e1;
             margin-bottom: 8px;
             display: block;
+            font-weight: 600;
         }
-        input {
+        input, select {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             background: #0f172a;
             border: 1px solid #475569;
             border-radius: 8px;
             color: #fff;
-            font-size: 16px;
-            margin-bottom: 20px;
+            font-size: 15px;
             outline: none;
+            transition: 0.3s;
         }
-        input:focus {
-            border-color: #ff4757;
+        input:focus, select:focus {
+            border-color: #ff3838;
+            box-shadow: 0 0 8px rgba(255, 56, 56, 0.3);
         }
         button {
             width: 100%;
-            padding: 12px;
-            background: #ff4757;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff3838, #ff4d4d);
             border: none;
             border-radius: 8px;
             color: white;
@@ -66,79 +73,160 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 56, 56, 0.4);
         }
         button:hover {
-            background: #e84118;
+            background: linear-gradient(135deg, #e03030, #ff3838);
+            transform: translateY(-2px);
         }
-        .results {
-            margin-top: 25px;
+        .results-section {
+            margin-top: 30px;
             display: none;
             background: #0f172a;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid #334155;
         }
-        .result-item {
-            margin-bottom: 15px;
+        .result-box {
+            margin-bottom: 20px;
         }
-        .result-item h3 {
-            font-size: 14px;
+        .result-box h3 {
+            font-size: 15px;
             color: #38bdf8;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .result-item p {
+        .result-content {
             font-size: 14px;
-            color: #cbd5e1;
+            color: #e2e8f0;
             background: #1e293b;
-            padding: 10px;
-            border-radius: 6px;
-            word-break: break-all;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #ff3838;
+            word-break: break-word;
+            white-space: pre-line;
+            line-height: 1.5;
+        }
+        .copy-btn {
+            background: #334155;
+            color: #cbd5e1;
+            border: none;
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 6px;
+            transition: 0.2s;
+        }
+        .copy-btn:hover {
+            background: #475569;
+            color: #fff;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
+    <div class="container">
         <h1>🚀 YouTube SEO AI Agent</h1>
-        <label for="topic">वीडियो का टॉपिक या कीवर्ड दर्ज करें:</label>
-        <input type="text" id="topic" placeholder="जैसे: Basic Computer Course for Beginners">
+        
+        <div class="form-group">
+            <label for="topic">वीडियो का टॉपिक या मुख्य कीवर्ड दर्ज करें:</label>
+            <input type="text" id="topic" placeholder="जैसे: Advanced Excel Dashboard या Basic Computer Course">
+        </div>
 
-        <button onclick="generateSEO()">SEO पैकेज जनरेट करें</button>
+        <div class="form-group">
+            <label for="contentType">फॉर्मेट चुनें (Format):</label>
+            <select id="contentType">
+                <option value="long">Long Video (फुल ट्यूटोरियल / गाइड)</option>
+                <option value="shorts">YouTube Shorts (शॉर्ट्स वीडियो)</option>
+            </select>
+        </div>
 
-        <div class="results" id="resultsBox">
-            <div class="result-item">
-                <h3>📌 High CTR Title</h3>
-                <p id="resTitle"></p>
+        <button onclick="generateAdvancedSEO()">हाई-डिमांड SEO पैकेज जनरेट करें</button>
+
+        <div class="results-section" id="resultsSection">
+            
+            <div class="result-box">
+                <h3>📌 High-CTR Unique Titles (यूनिक टाइटल्स)</h3>
+                <div class="result-content" id="outTitles"></div>
             </div>
-            <div class="result-item">
-                <h3>📝 SEO Friendly Description</h3>
-                <p id="resDesc"></p>
+
+            <div class="result-box">
+                <h3>📝 Bilingual Professional Description (हिंदी & English)</h3>
+                <div class="result-content" id="outDesc"></div>
             </div>
-            <div class="result-item">
-                <h3>🏷️ Optimized Tags</h3>
-                <p id="resTags"></p>
+
+            <div class="result-box">
+                <h3>🏷️ Massive Optimized Tags (400+ Reach Tags)</h3>
+                <div class="result-content" id="outTags"></div>
             </div>
-            <div class="result-item">
-                <h3>#️⃣ Trending Hashtags</h3>
-                <p id="resHash"></p>
+
+            <div class="result-box">
+                <h3>#️⃣ High-Reach Trending Hashtags</h3>
+                <div class="result-content" id="outHashtags"></div>
             </div>
+
         </div>
     </div>
 
     <script>
-        function generateSEO() {
-            const topic = document.getElementById('topic').value.trim();
-            if(!topic) {
-                alert('कृपया वीडियो का टॉपिक दर्ज करें!');
+        function generateAdvancedSEO() {
+            const topicInput = document.getElementById('topic').value.trim();
+            const format = document.getElementById('contentType').value;
+
+            if(!topicInput) {
+                alert('कृपया पहले वीडियो का टॉपिक दर्ज करें!');
                 return;
             }
 
-            document.getElementById('resTitle').innerText = topic.toUpperCase() + " | Complete Step by Step Guide (2026)";
-            document.getElementById('resDesc').innerText = "In this video, you will learn everything about " + topic + ". Watch till the end to master all practical concepts step by step! Like and Subscribe for more tech tutorials.";
-            document.getElementById('resTags').innerText = topic + ", " + topic + " tutorial, " + topic + " in hindi, learn " + topic + ", tech guide";
-            document.getElementById('resHash').innerText = "#" + topic.replace(/\s+/g, '') + " #TechTutorial #LearnInHindi #TechWithPrinceHub";
+            const cleanTopic = topicInput.toUpperCase();
+            const lowerTopic = topicInput.toLowerCase();
 
-            document.getElementById('resultsBox').style.display = 'block';
+            let titlesHTML = "";
+            let descHTML = "";
+            let tagsHTML = "";
+            let hashtagsHTML = "";
+
+            if(format === 'long') {
+                // Long video SEO generation
+                titlesHTML = `1. ${cleanTopic} Complete Masterclass in Hindi 2026 | Step by Step Guide\n` +
+                             `2. How to Learn ${topicInput} Easily (Zero to Hero Course)\n` +
+                             `3. Top Secrets of ${topicInput} You Must Know! | Tech with Prince Hub`;
+
+                descHTML = `Welcome to Tech with Prince Hub! In this comprehensive video, we dive deep into ${topicInput}. Whether you are a beginner or looking to upgrade your skills, this tutorial covers everything from basics to advanced practical implementations.\n\n` +
+                           `स्वागत है आपका 'Tech with Prince Hub' पर! इस वीडियो में हम ${topicInput} के बारे में पूरी जानकारी सरल हिंदी में सीखेंगे। वीडियो को अंत तक जरूर देखें ताकि कोई भी स्टेप छूट न जाए!\n\n` +
+                           `📌 Topics Covered:\n` +
+                           `- Introduction to ${topicInput}\n` +
+                           `- Practical implementation & tips\n` +
+                           `- Best practices and workflow optimization\n\n` +
+                           `Don't forget to Like, Share, and Subscribe for more high-value tech tutorials!`;
+
+                tagsHTML = `${lowerTopic}, ${lowerTopic} in hindi, learn ${lowerTopic}, ${lowerTopic} tutorial 2026, tech with prince hub, advanced ${lowerTopic}, computer course in hindi, practical guide, step by step ${lowerTopic}, ${lowerTopic} full course, basic to advanced ${lowerTopic}, data skills, professional training, hindi tech tutorials, top tips for ${lowerTopic}, master ${lowerTopic}, complete guide hindi, digital skills india, tech learning hub, professional skills`;
+
+                hashtagsHTML = `#${lowerTopic.replace(/\s+/g, '')} #TechWithPrinceHub #LearnInHindi #2026Tutorial #ComputerCourse #DataSkills #TechGuide #HindiTech`;
+
+            } else {
+                // Shorts SEO generation
+                titlesHTML = `1. ${cleanTopic} Trick You Didn't Know! 🤯 #shorts\n` +
+                             `2. Master ${topicInput} in 60 Seconds! ⚡\n` +
+                             `3. Amazing ${topicInput} Hack 🔥`;
+
+                descHTML = `Quick trick on ${topicInput}! Watch till the end for the best result. Subscribe to Tech with Prince Hub for more quick tech shorts!\n\n` +
+                           `इस शॉर्ट वीडियो में जानिए ${topicInput} के बारे में एक शानदार ट्रिक! ऐसे ही और टिप्स के लिए चैनल को सब्सक्राइब करें।`;
+
+                tagsHTML = `${lowerTopic} shorts, ${lowerTopic} trick, fast learning, ${lowerTopic} hack, viral tech shorts, tech with prince hub, quick tips hindi, 60 seconds learning, smart tricks, trending shorts, tech shorts india`;
+
+                hashtagsHTML = `#${lowerTopic.replace(/\s+/g, '')} #Shorts #TechShorts #TechWithPrinceHub #Viral #Learning #QuickTips`;
+            }
+
+            document.getElementById('outTitles').innerText = titlesHTML;
+            document.getElementById('outDesc').innerText = descHTML;
+            document.getElementById('outTags').innerText = tagsHTML;
+            document.getElementById('outHashtags').innerText = hashtagsHTML;
+
+            document.getElementById('resultsSection').style.display = 'block';
         }
     </script>
 
