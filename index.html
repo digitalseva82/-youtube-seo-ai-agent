@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube SEO AI Agent</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #334155;
+        }
+        h1 {
+            color: #ff4757;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #0f172a;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        input:focus {
+            border-color: #ff4757;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff4757;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e84118;
+        }
+        .results {
+            margin-top: 25px;
+            display: none;
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+        .result-item {
+            margin-bottom: 15px;
+        }
+        .result-item h3 {
+            font-size: 14px;
+            color: #38bdf8;
+            margin-bottom: 5px;
+        }
+        .result-item p {
+            font-size: 14px;
+            color: #cbd5e1;
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 6px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🚀 YouTube SEO AI Agent</h1>
+        <label for="topic">वीडियो का टॉपिक या कीवर्ड दर्ज करें:</label>
+        <input type="text" id="topic" placeholder="जैसे: Basic Computer Course for Beginners">
+
+        <button onclick="generateSEO()">SEO पैकेज जनरेट करें</button>
+
+        <div class="results" id="resultsBox">
+            <div class="result-item">
+                <h3>📌 High CTR Title</h3>
+                <p id="resTitle"></p>
+            </div>
+            <div class="result-item">
+                <h3>📝 SEO Friendly Description</h3>
+                <p id="resDesc"></p>
+            </div>
+            <div class="result-item">
+                <h3>🏷️ Optimized Tags</h3>
+                <p id="resTags"></p>
+            </div>
+            <div class="result-item">
+                <h3>#️⃣ Trending Hashtags</h3>
+                <p id="resHash"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateSEO() {
+            const topic = document.getElementById('topic').value.trim();
+            if(!topic) {
+                alert('कृपया वीडियो का टॉपिक दर्ज करें!');
+                return;
+            }
+
+            document.getElementById('resTitle').innerText = topic.toUpperCase() + " | Complete Step by Step Guide (2026)";
+            document.getElementById('resDesc').innerText = "In this video, you will learn everything about " + topic + ". Watch till the end to master all practical concepts step by step! Like and Subscribe for more tech tutorials.";
+            document.getElementById('resTags').innerText = topic + ", " + topic + " tutorial, " + topic + " in hindi, learn " + topic + ", tech guide";
+            document.getElementById('resHash').innerText = "#" + topic.replace(/\s+/g, '') + " #TechTutorial #LearnInHindi #TechWithPrinceHub";
+
+            document.getElementById('resultsBox').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
