@@ -1,1 +1,1 @@
-# -youtube-seo-ai-agent
+# Python packages required for the project
